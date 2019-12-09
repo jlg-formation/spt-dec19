@@ -1,8 +1,50 @@
+@import "../node_modules/normalize.css/normalize.css";
 
+body {
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: 2em auto;
+  grid-template-rows: 3em auto 3em;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+  width: 100vw;
+  height: 100vh;
+}
 
-
-
+header {
+  grid-area: header;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+aside {
+  grid-area: aside;
+  background: #ddd;
+}
+main {
+  grid-area: main;
+  background: #ccc;
+}
+footer {
+  grid-area: footer;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 h1 {
-  color: red;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
