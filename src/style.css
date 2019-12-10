@@ -63,6 +63,16 @@ button {
   padding: 0.2em;
 }
 
+button:hover {
+  border-color: #ddd;
+  background: #ddd;
+}
+
+button:active {
+  border-color: #ccc;
+  background: #ccc;
+}
+
 button img {
   width: 100%;
 }
