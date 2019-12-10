@@ -4,11 +4,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
 
-  return {
+  const result = {
     entry: "./src/main.js",
     output: {
       filename: "bundle.[hash:4].js",
@@ -18,14 +19,16 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: "src/index.html"
       }),
-      new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // all options are optional
         filename: "style.[hash:4].css",
         chunkFilename: "[id].css",
         ignoreOrder: false // Enable to remove warnings about conflicting order
-      })
+      }),
+      new CopyPlugin([
+        { from: 'src/assets', to: 'assets' },
+      ]),
     ],
     optimization: {
       minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
@@ -46,5 +49,9 @@ module.exports = (env, argv) => {
       ]
     }
   };
+  if (isProd) {
+    result.plugins.push(new CleanWebpackPlugin());
+  }
+  return result;
 };
 
