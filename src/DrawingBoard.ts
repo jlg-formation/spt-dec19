@@ -1,5 +1,6 @@
 import { Mode } from './Mode';
 import { Widget } from './Widget';
+import { SVGUtils } from './SVGUtils';
 
 export class DrawingBoard {
   elt: HTMLElement;
@@ -7,6 +8,10 @@ export class DrawingBoard {
   stateBar: HTMLElement;
   private privateMode: string;
   widget: Widget;
+  content: SVGGElement;
+  selection: SVGGElement;
+  edition: SVGGElement;
+  
 
   get mode() {
     return this.privateMode;
@@ -27,7 +32,10 @@ export class DrawingBoard {
     this.stateBar = this.elt.querySelector('.state-bar');
     this.mode = Mode.DEFAULT;
     console.log('Mode: %O', Mode);
-    this.svg.addEventListener('click', this.onClick.bind(this))
+    this.svg.addEventListener('click', this.onClick.bind(this));
+    this.content = SVGUtils.addGroup(this.svg, 'content');
+    this.selection = SVGUtils.addGroup(this.svg, 'selection');
+    this.edition = SVGUtils.addGroup(this.svg, 'edition');
   }
 
   prepareToInsert(widget: Widget) {

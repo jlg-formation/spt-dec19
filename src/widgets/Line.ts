@@ -26,6 +26,6 @@ export class Line extends Widget {
     line.setAttribute('y1', '' + this.y1);
     line.setAttribute('x2', '' + this.x2);
     line.setAttribute('y2', '' + this.y2);
-    this.parent.svg.appendChild(line);
+    this.parent.content.appendChild(line);
   }
 }

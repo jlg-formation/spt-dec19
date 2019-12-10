@@ -7,4 +7,11 @@ export class SVGUtils {
     pt.y = event.clientY;
     return pt.matrixTransform(svg.getScreenCTM().inverse());
   }
+
+  static addGroup(parent: SVGElement, name: string) {
+    const g = document.createElementNS(xmlns, 'g');
+    g.setAttribute('class', name);
+    parent.appendChild(g);
+    return g;
+  }
 }
