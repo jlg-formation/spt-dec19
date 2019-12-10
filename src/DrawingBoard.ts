@@ -13,6 +13,10 @@ export class DrawingBoard {
   set mode(val: string) {
     this.privateMode = val;
     this.stateBar.innerHTML = `MODE : ${this.privateMode}`;
+    for (const m of Mode) {
+      this.elt.classList.remove(m);
+    }
+    this.elt.classList.add(this.privateMode);
   }
 
   constructor(selector: string) {
@@ -20,5 +24,8 @@ export class DrawingBoard {
     this.svg = this.elt.querySelector('svg');
     this.stateBar = this.elt.querySelector('.state-bar');
     this.mode = Mode.DEFAULT;
+    console.log('Mode: %O', Mode);
+
+    
   }
 }
