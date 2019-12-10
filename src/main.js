@@ -1,16 +1,12 @@
 import "./style.css";
+import { Menu } from "./Menu";
 
-console.log("coucou");
-
-const insertLineButton = document.querySelector(".insert-line");
-
-insertLineButton.addEventListener("click", () => {
+const menu = new Menu();
+menu.addButton(".insert-line", () => {
   console.log("insert line");
 });
-
-
-const deleteAllButton = document.querySelector(".delete-all");
-
-deleteAllButton.addEventListener("click", () => {
+menu.addButton(".delete-all", () => {
   console.log("delete all");
 });
+
+
