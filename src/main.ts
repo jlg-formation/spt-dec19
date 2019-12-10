@@ -1,6 +1,6 @@
 import './style.css';
-import { Menu } from './Menu';
 import { DrawingBoard } from './DrawingBoard';
+import { Menu } from './Menu';
 import { Mode } from './Mode';
 
 const board = new DrawingBoard('main');
