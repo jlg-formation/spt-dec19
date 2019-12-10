@@ -6,6 +6,7 @@ export class DrawingBoard {
   svg: SVGElement;
   stateBar: HTMLElement;
   private privateMode: string;
+  widget: Widget;
 
   get mode() {
     return this.privateMode;
@@ -31,5 +32,6 @@ export class DrawingBoard {
   prepareToInsert(widget: Widget) {
     console.log('widget: ', widget);
     this.mode = Mode.INSERT;
+    this.widget = widget;
   }
 }
