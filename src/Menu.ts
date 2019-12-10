@@ -1,5 +1,5 @@
 export class Menu {
-  addButton(selector, callback) {
+  addButton(selector: string, callback: () => void) {
     const btn = document.querySelector(selector);
     btn.addEventListener("click", callback);
   }

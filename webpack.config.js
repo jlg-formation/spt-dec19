@@ -10,10 +10,13 @@ module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
 
   const result = {
-    entry: "./src/main.js",
+    entry: "./src/main.ts",
     output: {
       filename: "bundle.[hash:4].js",
       path: path.resolve(__dirname, "dist")
+    },
+    resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ],
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -36,6 +39,11 @@ module.exports = (env, argv) => {
     devtool: isProd ? 'none' : 'inline-source-map',
     module: {
       rules: [
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/,
+        },
         {
           test: /\.css$/i,
           use: [
