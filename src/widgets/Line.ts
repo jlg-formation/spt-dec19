@@ -6,4 +6,8 @@ export class Line extends Widget {
     super(parent);
     console.log('creating line');
   }
+
+  depose(): void {
+    console.log('depose line');
+  }
 }

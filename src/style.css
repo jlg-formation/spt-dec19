@@ -67,6 +67,10 @@ svg {
   height: 100%;
 }
 
+main.INSERT svg {
+  cursor: crosshair;
+}
+
 button {
   border: 0.1em solid #eee;
   background: #eee;

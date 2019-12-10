@@ -27,11 +27,20 @@ export class DrawingBoard {
     this.stateBar = this.elt.querySelector('.state-bar');
     this.mode = Mode.DEFAULT;
     console.log('Mode: %O', Mode);
+    this.svg.addEventListener('click', this.onClick.bind(this))
   }
 
   prepareToInsert(widget: Widget) {
     console.log('widget: ', widget);
     this.mode = Mode.INSERT;
     this.widget = widget;
+  }
+
+  onClick() {
+    console.log('click', this);
+    if (this.mode === Mode.INSERT) {
+      console.log('about to insert widget');
+      this.widget.depose();
+    }
   }
 }
