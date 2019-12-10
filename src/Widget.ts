@@ -4,5 +4,5 @@ export abstract class Widget {
   constructor(public parent: DrawingBoard) {
   }
 
-  abstract depose(): void;
+  abstract depose(event: MouseEvent): void;
 }

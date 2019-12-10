@@ -3,7 +3,7 @@ import { Widget } from './Widget';
 
 export class DrawingBoard {
   elt: HTMLElement;
-  svg: SVGElement;
+  svg: SVGSVGElement;
   stateBar: HTMLElement;
   private privateMode: string;
   widget: Widget;
@@ -36,11 +36,12 @@ export class DrawingBoard {
     this.widget = widget;
   }
 
-  onClick() {
-    console.log('click', this);
+  onClick(event: MouseEvent) {
+    console.log('click', this, event);
     if (this.mode === Mode.INSERT) {
       console.log('about to insert widget');
-      this.widget.depose();
+      this.widget.depose(event);
+      this.mode = Mode.DEFAULT;
     }
   }
 }

@@ -92,3 +92,8 @@ button:active {
 button img {
   width: 100%;
 }
+
+line {
+  stroke: black;
+  stroke-width: 5;
+}
