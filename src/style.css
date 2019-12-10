@@ -49,6 +49,18 @@ a:hover {
   text-decoration: underline;
 }
 
+main {
+  display: flex;
+  flex-flow: column;
+}
+
+.state-bar {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  padding: 0 1em;
+}
+
 svg {
   background: white;
   width: 100%;
