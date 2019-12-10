@@ -1,4 +1,5 @@
 import { Mode } from './Mode';
+import { Widget } from './Widget';
 
 export class DrawingBoard {
   elt: HTMLElement;
@@ -25,7 +26,10 @@ export class DrawingBoard {
     this.stateBar = this.elt.querySelector('.state-bar');
     this.mode = Mode.DEFAULT;
     console.log('Mode: %O', Mode);
+  }
 
-    
+  prepareToInsert(widget: Widget) {
+    console.log('widget: ', widget);
+    this.mode = Mode.INSERT;
   }
 }
