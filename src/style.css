@@ -71,6 +71,10 @@ main.INSERT svg {
   cursor: crosshair;
 }
 
+main.SELECTION svg g.selection line {
+  cursor: move;
+}
+
 button {
   border: 0.1em solid #eee;
   background: #eee;
