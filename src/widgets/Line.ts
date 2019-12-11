@@ -2,6 +2,7 @@ import { Widget } from '../Widget';
 import { DrawingBoard } from '../DrawingBoard';
 import { xmlns, SVGUtils } from '../SVGUtils';
 import { Mode } from '../Mode';
+import { WidgetEdit } from '../WidgetEdit';
 
 export class Line extends Widget {
   x1 = 0;
@@ -44,11 +45,7 @@ export class Line extends Widget {
   select(): void {
     console.log('select line');
     this.parent.removeAllEditionPoint();
-    this.parent.addEditionPoint('start', this.x1, this.y1, () => {
-      console.log('edit');
-    });
-    this.parent.addEditionPoint('end', this.x2, this.y2, () => {
-      console.log('edit');
-    });
+    this.parent.addEditionPoint('start', this.x1, this.y1, new WidgetEdit(this, 'start').getEditCallback());
+    this.parent.addEditionPoint('end', this.x2, this.y2, new WidgetEdit(this, 'end').getEditCallback());
   }
 }
