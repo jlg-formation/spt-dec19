@@ -87,4 +87,24 @@ export class Line extends Widget {
       editionPointElt.setAttribute('cy', '' + this.y2);
     }
   }
+
+  move(orig: any, delta: IPoint) {
+    this.unselect();
+    console.log('orig: ', orig);
+    console.log('delta: ', delta);
+    this.x1 = delta.x + orig.x1;
+    this.y1 = delta.y + orig.y1;
+    this.x2 = delta.x + orig.x2;
+    this.y2 = delta.y + orig.y2;
+    const line = this.elt;
+    line.setAttribute('x1', '' + this.x1);
+    line.setAttribute('y1', '' + this.y1);
+    line.setAttribute('x2', '' + this.x2);
+    line.setAttribute('y2', '' + this.y2);
+    const sline = this.selectionElt;
+    sline.setAttribute('x1', '' + this.x1);
+    sline.setAttribute('y1', '' + this.y1);
+    sline.setAttribute('x2', '' + this.x2);
+    sline.setAttribute('y2', '' + this.y2);
+  };
 }

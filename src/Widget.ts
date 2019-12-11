@@ -17,4 +17,6 @@ export abstract class Widget {
   }
 
   abstract edit(label: string, orig: any, delta: IPoint): void;
+  
+  abstract move(orig: any, delta: IPoint): void;
 }

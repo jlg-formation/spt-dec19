@@ -8,14 +8,13 @@ export class WidgetMove {
     return (ev: MouseEvent) => {
       console.log('move...');
 
-      // const orig = this.widget.getOrigin();
-      // const startX = ev.pageX;
-      // const startY = ev.pageY;
+      const orig = this.widget.getOrigin();
+      const startX = ev.pageX;
+      const startY = ev.pageY;
 
       const mousemove = (event: MouseEvent) => {
         console.log('mousemove');
-        // this.widget.edit(this.label, orig, { x: event.pageX - startX, y: event.pageY - startY });
-        // this.widget.parent.mode = Mode.EDITION;
+        this.widget.move(orig, { x: event.pageX - startX, y: event.pageY - startY });
       };
 
       const mouseup = (evt: MouseEvent) => {
