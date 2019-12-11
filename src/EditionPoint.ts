@@ -29,12 +29,14 @@ export class EditionPoint {
     clickableCircle.classList.add('invisible');
     clickableCircle.addEventListener('mousedown', (ev: MouseEvent) => {
       ev.stopPropagation();
+      ev.preventDefault();
       console.log('start to edit');
       onEdit(ev, label, x, y);
     });
 
     clickableCircle.addEventListener('click', (ev: MouseEvent) => {
       ev.stopPropagation();
+      ev.preventDefault();
       console.log('stop propagation');
     });
     this.group.appendChild(clickableCircle);

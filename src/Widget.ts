@@ -1,9 +1,8 @@
-import { DrawingBoard } from "./DrawingBoard";
+import { DrawingBoard } from './DrawingBoard';
+import { IPoint } from './IPoint';
 
 export abstract class Widget {
-  
-  constructor(public parent: DrawingBoard) {
-  }
+  constructor(public parent: DrawingBoard) {}
 
   abstract depose(event: MouseEvent): void;
 
@@ -12,4 +11,10 @@ export abstract class Widget {
   unselect() {
     this.parent.removeAllEditionPoint();
   }
+
+  getOrigin() {
+    return { ...this };
+  }
+
+  abstract edit(label: string, orig: Widget, delta: IPoint): void;
 }
