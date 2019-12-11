@@ -71,7 +71,7 @@ main.INSERT svg {
   cursor: crosshair;
 }
 
-main.SELECTION svg g.selection line {
+main svg g.selection line {
   cursor: move;
 }
 

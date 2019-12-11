@@ -3,6 +3,7 @@ import { DrawingBoard } from '../DrawingBoard';
 import { xmlns, SVGUtils } from '../SVGUtils';
 import { WidgetEdit } from '../WidgetEdit';
 import { IPoint } from '../IPoint';
+import { WidgetMove } from '../WidgetMove';
 
 export class Line extends Widget {
   x1 = 0;
@@ -41,6 +42,11 @@ export class Line extends Widget {
       evt.stopPropagation();
       console.log('select');
       this.parent.select(this);
+    });
+    this.selectionElt.addEventListener('mousedown', (evt: MouseEvent) => {
+      evt.stopPropagation();
+      console.log('move start');
+      new WidgetMove(this).getMoveCallback()(evt);
     });
   }
 
