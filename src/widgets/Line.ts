@@ -44,7 +44,11 @@ export class Line extends Widget {
   select(): void {
     console.log('select line');
     this.parent.removeAllEditionPoint();
-    this.parent.addEditionPoint('start', this.x1, this.y1);
-    this.parent.addEditionPoint('end', this.x2, this.y2);
+    this.parent.addEditionPoint('start', this.x1, this.y1, () => {
+      console.log('edit');
+    });
+    this.parent.addEditionPoint('end', this.x2, this.y2, () => {
+      console.log('edit');
+    });
   }
 }

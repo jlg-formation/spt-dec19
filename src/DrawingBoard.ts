@@ -1,7 +1,7 @@
 import { Mode } from './Mode';
 import { Widget } from './Widget';
 import { SVGUtils } from './SVGUtils';
-import { EditionPoint } from './EditionPoint';
+import { EditionPoint, EditCallback } from './EditionPoint';
 
 export class DrawingBoard {
   elt: HTMLElement;
@@ -70,8 +70,8 @@ export class DrawingBoard {
     this.widget = undefined;
   }
 
-  addEditionPoint(label: string, x: number, y: number) {
-    const editionPoint = new EditionPoint(label, x, y);
+  addEditionPoint(label: string, x: number, y: number, onEdit: EditCallback) {
+    const editionPoint = new EditionPoint(label, x, y, onEdit);
     this.edition.appendChild(editionPoint.getGroup());
   }
 
