@@ -16,5 +16,5 @@ export abstract class Widget {
     return { ...this };
   }
 
-  abstract edit(label: string, orig: Widget, delta: IPoint): void;
+  abstract edit(label: string, orig: any, delta: IPoint): void;
 }

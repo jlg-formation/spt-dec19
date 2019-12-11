@@ -9,6 +9,8 @@ export class Line extends Widget {
   y1 = 0;
   x2 = 0;
   y2 = 0;
+  elt: SVGLineElement;
+  selectionElt: SVGLineElement;
 
   constructor(parent: DrawingBoard) {
     super(parent);
@@ -17,25 +19,25 @@ export class Line extends Widget {
 
   depose(event: MouseEvent): void {
     console.log('depose line');
-    const line = document.createElementNS(xmlns, 'line');
+    this.elt = document.createElementNS(xmlns, 'line');
     const { x, y } = SVGUtils.getCoordonates(this.parent.svg, event);
     this.x1 = x;
     this.y1 = y;
     this.x2 = x + 100;
     this.y2 = y + 100;
-    line.setAttribute('x1', '' + this.x1);
-    line.setAttribute('y1', '' + this.y1);
-    line.setAttribute('x2', '' + this.x2);
-    line.setAttribute('y2', '' + this.y2);
-    this.parent.content.appendChild(line);
+    this.elt.setAttribute('x1', '' + this.x1);
+    this.elt.setAttribute('y1', '' + this.y1);
+    this.elt.setAttribute('x2', '' + this.x2);
+    this.elt.setAttribute('y2', '' + this.y2);
+    this.parent.content.appendChild(this.elt);
 
-    const selectionLine = document.createElementNS(xmlns, 'line');
-    selectionLine.setAttribute('x1', '' + this.x1);
-    selectionLine.setAttribute('y1', '' + this.y1);
-    selectionLine.setAttribute('x2', '' + this.x2);
-    selectionLine.setAttribute('y2', '' + this.y2);
-    this.parent.selection.appendChild(selectionLine);
-    selectionLine.addEventListener('click', (evt: MouseEvent) => {
+    this.selectionElt = document.createElementNS(xmlns, 'line');
+    this.selectionElt.setAttribute('x1', '' + this.x1);
+    this.selectionElt.setAttribute('y1', '' + this.y1);
+    this.selectionElt.setAttribute('x2', '' + this.x2);
+    this.selectionElt.setAttribute('y2', '' + this.y2);
+    this.parent.selection.appendChild(this.selectionElt);
+    this.selectionElt.addEventListener('click', (evt: MouseEvent) => {
       evt.stopPropagation();
       console.log('select');
       this.parent.select(this);
@@ -49,7 +51,22 @@ export class Line extends Widget {
     this.parent.addEditionPoint('end', this.x2, this.y2, new WidgetEdit(this, 'end').getEditCallback());
   }
 
-  edit(label: string, orig: Widget, delta: IPoint) {
-    console.log('line edit');
+  edit(label: string, orig: any, delta: IPoint) {
+    console.log('line edit', delta);
+
+    if (label === 'start') {
+      console.log('line edit start');
+      this.x1 = delta.x + orig.x1;
+      console.log('this.x1: ', this.x1);
+      this.y1 = delta.y + orig.y1;
+
+      this.elt.setAttribute('x1', '' + this.x1);
+      this.elt.setAttribute('y1', '' + this.y1);
+      this.selectionElt.setAttribute('x1', '' + this.x1);
+      this.selectionElt.setAttribute('y1', '' + this.y1);
+      const editionPointElt = this.parent.getEditionPointElt(label);
+      editionPointElt.setAttribute('cx', '' + this.x1);
+      editionPointElt.setAttribute('cy', '' + this.y1);
+    }
   }
 }

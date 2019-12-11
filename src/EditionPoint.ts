@@ -14,7 +14,7 @@ export class EditionPoint {
     onEdit: EditCallback
   ) {
     this.group = document.createElementNS(xmlns, 'g');
-    this.group.setAttribute('class', 'edition-point');
+    this.group.classList.add('edition-point', label);
     const circle = document.createElementNS(xmlns, 'circle');
     circle.setAttribute('cx', '' + x);
     circle.setAttribute('cy', '' + y);

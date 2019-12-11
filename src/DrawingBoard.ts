@@ -56,6 +56,11 @@ export class DrawingBoard {
       this.unselect();
       
     }
+    if (this.mode === Mode.EDITION) {
+      console.log('about to unselect from edition');
+      this.unselect();
+      
+    }
   }
 
   select(widget: Widget) {
@@ -79,5 +84,9 @@ export class DrawingBoard {
     while (this.edition.hasChildNodes()) {
       this.edition.removeChild(this.edition.firstChild);
     }
+  }
+
+  getEditionPointElt(label: string) {
+    return this.edition.querySelector(`g.${label} circle`);
   }
 }

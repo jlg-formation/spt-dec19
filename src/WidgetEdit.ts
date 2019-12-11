@@ -14,9 +14,9 @@ export class WidgetEdit {
       const startX = ev.pageX;
       const startY = ev.pageY;
 
-      const mousemove = () => {
+      const mousemove = (event: MouseEvent) => {
         console.log('mousemove');
-        this.widget.edit(this.label, orig, { x: ev.pageX - startX, y: ev.pageY - startY });
+        this.widget.edit(this.label, orig, { x: event.pageX - startX, y: event.pageY - startY });
         this.widget.parent.mode = Mode.EDITION;
       };
 
