@@ -27,5 +27,12 @@ export class Line extends Widget {
     line.setAttribute('x2', '' + this.x2);
     line.setAttribute('y2', '' + this.y2);
     this.parent.content.appendChild(line);
+
+    const selectionLine = document.createElementNS(xmlns, 'line');
+    selectionLine.setAttribute('x1', '' + this.x1);
+    selectionLine.setAttribute('y1', '' + this.y1);
+    selectionLine.setAttribute('x2', '' + this.x2);
+    selectionLine.setAttribute('y2', '' + this.y2);
+    this.parent.selection.appendChild(selectionLine);
   }
 }
