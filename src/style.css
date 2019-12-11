@@ -99,7 +99,7 @@ line {
 }
 
 g.selection line {
-  stroke: hsla(0, 100%, 50%, 0.5);
+  stroke: hsla(0, 100%, 50%, 0);
   stroke-width: 50;
   cursor: pointer;
 }

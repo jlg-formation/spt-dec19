@@ -57,7 +57,6 @@ export class Line extends Widget {
     if (label === 'start') {
       console.log('line edit start');
       this.x1 = delta.x + orig.x1;
-      console.log('this.x1: ', this.x1);
       this.y1 = delta.y + orig.y1;
 
       this.elt.setAttribute('x1', '' + this.x1);
@@ -67,6 +66,19 @@ export class Line extends Widget {
       const editionPointElt = this.parent.getEditionPointElt(label);
       editionPointElt.setAttribute('cx', '' + this.x1);
       editionPointElt.setAttribute('cy', '' + this.y1);
+    }
+    if (label === 'end') {
+      console.log('line edit end');
+      this.x2 = delta.x + orig.x2;
+      this.y2 = delta.y + orig.y2;
+
+      this.elt.setAttribute('x2', '' + this.x2);
+      this.elt.setAttribute('y2', '' + this.y2);
+      this.selectionElt.setAttribute('x2', '' + this.x2);
+      this.selectionElt.setAttribute('y2', '' + this.y2);
+      const editionPointElt = this.parent.getEditionPointElt(label);
+      editionPointElt.setAttribute('cx', '' + this.x2);
+      editionPointElt.setAttribute('cy', '' + this.y2);
     }
   }
 }
