@@ -51,11 +51,23 @@ export class DrawingBoard {
       this.widget.depose(event);
       this.mode = Mode.DEFAULT;
     }
+    if (this.mode === Mode.SELECTION) {
+      console.log('about to unselect');
+      this.unselect();
+      
+    }
   }
 
   select(widget: Widget) {
     this.mode = Mode.SELECTION;
+    this.widget = widget;
     widget.select();
+  }
+
+  unselect() {
+    this.mode = Mode.DEFAULT;
+    this.widget.unselect();
+    this.widget = undefined;
   }
 
   addEditionPoint(label: string, x: number, y: number) {

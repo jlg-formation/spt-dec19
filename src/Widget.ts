@@ -8,4 +8,8 @@ export abstract class Widget {
   abstract depose(event: MouseEvent): void;
 
   abstract select(): void;
+
+  unselect() {
+    this.parent.removeAllEditionPoint();
+  }
 }
