@@ -4,7 +4,6 @@ import { xmlns, SVGUtils } from '../SVGUtils';
 import { Mode } from '../Mode';
 
 export class Line extends Widget {
-  
   x1 = 0;
   y1 = 0;
   x2 = 0;
@@ -44,5 +43,8 @@ export class Line extends Widget {
 
   select(): void {
     console.log('select line');
+    this.parent.removeAllEditionPoint();
+    this.parent.addEditionPoint('start', this.x1, this.y1);
+    this.parent.addEditionPoint('end', this.x2, this.y2);
   }
 }

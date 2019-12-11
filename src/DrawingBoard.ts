@@ -1,9 +1,9 @@
 import { Mode } from './Mode';
 import { Widget } from './Widget';
 import { SVGUtils } from './SVGUtils';
+import { EditionPoint } from './EditionPoint';
 
 export class DrawingBoard {
-  
   elt: HTMLElement;
   svg: SVGSVGElement;
   stateBar: HTMLElement;
@@ -12,7 +12,6 @@ export class DrawingBoard {
   content: SVGGElement;
   selection: SVGGElement;
   edition: SVGGElement;
-  
 
   get mode() {
     return this.privateMode;
@@ -57,5 +56,16 @@ export class DrawingBoard {
   select(widget: Widget) {
     this.mode = Mode.SELECTION;
     widget.select();
+  }
+
+  addEditionPoint(label: string, x: number, y: number) {
+    const editionPoint = new EditionPoint(label, x, y);
+    this.edition.appendChild(editionPoint.getGroup());
+  }
+
+  removeAllEditionPoint() {
+    while (this.edition.hasChildNodes()) {
+      this.edition.removeChild(this.edition.firstChild);
+    }
   }
 }

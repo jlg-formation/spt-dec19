@@ -103,3 +103,18 @@ g.selection line {
   stroke-width: 50;
   cursor: pointer;
 }
+
+g.edition-point circle.visible {
+  fill: white;
+  stroke: black;
+  stroke-width: 2;
+}
+
+g.edition-point circle.invisible {
+  opacity: 0;
+  cursor: pointer;
+}
+g.edition-point circle.invisible:hover {
+  opacity: 1;
+  fill: hsla(0, 0%, 50%, 0.05);
+}
