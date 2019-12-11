@@ -4,6 +4,7 @@ import { xmlns, SVGUtils } from '../SVGUtils';
 import { Mode } from '../Mode';
 
 export class Line extends Widget {
+  
   x1 = 0;
   y1 = 0;
   x2 = 0;
@@ -34,5 +35,14 @@ export class Line extends Widget {
     selectionLine.setAttribute('x2', '' + this.x2);
     selectionLine.setAttribute('y2', '' + this.y2);
     this.parent.selection.appendChild(selectionLine);
+    selectionLine.addEventListener('click', (evt: MouseEvent) => {
+      evt.stopPropagation();
+      console.log('select');
+      this.parent.select(this);
+    });
+  }
+
+  select(): void {
+    console.log('select line');
   }
 }

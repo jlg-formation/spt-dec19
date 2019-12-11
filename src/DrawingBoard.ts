@@ -3,6 +3,7 @@ import { Widget } from './Widget';
 import { SVGUtils } from './SVGUtils';
 
 export class DrawingBoard {
+  
   elt: HTMLElement;
   svg: SVGSVGElement;
   stateBar: HTMLElement;
@@ -51,5 +52,10 @@ export class DrawingBoard {
       this.widget.depose(event);
       this.mode = Mode.DEFAULT;
     }
+  }
+
+  select(widget: Widget) {
+    this.mode = Mode.SELECTION;
+    widget.select();
   }
 }
