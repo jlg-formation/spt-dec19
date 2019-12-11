@@ -14,4 +14,10 @@ export class SVGUtils {
     parent.appendChild(g);
     return g;
   }
+
+  static removeGroupContent(group: SVGGElement) {
+    while (group.hasChildNodes()) {
+      group.removeChild(group.firstChild);
+    }
+  }
 }

@@ -7,10 +7,6 @@ const board = new DrawingBoard('main');
 
 const menu = new Menu();
 
-menu.addButton('.insert-line', () => {
-  board.prepareToInsert(new Line(board));
-});
+menu.addButton('.insert-line', () => board.prepareToInsert(new Line(board)));
 
-menu.addButton('.delete-all', () => {
-  console.log('delete all');
-});
+menu.addButton('.delete-all', board.removeAll.bind(board));

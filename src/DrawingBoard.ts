@@ -54,12 +54,10 @@ export class DrawingBoard {
     if (this.mode === Mode.SELECTION) {
       console.log('about to unselect');
       this.unselect();
-      
     }
     if (this.mode === Mode.EDITION) {
       console.log('about to unselect from edition');
       this.unselect();
-      
     }
   }
 
@@ -88,5 +86,11 @@ export class DrawingBoard {
 
   getEditionPointElt(label: string) {
     return this.edition.querySelector(`g.${label} circle`);
+  }
+
+  removeAll() {
+    SVGUtils.removeGroupContent(this.edition);
+    SVGUtils.removeGroupContent(this.selection);
+    SVGUtils.removeGroupContent(this.content);
   }
 }
